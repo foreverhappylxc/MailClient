@@ -10,12 +10,13 @@ import java.awt.Color;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 /**
 * @author Xingchao Long
 * @date 2019/21/23 13:21:32
-* @ClassName MainWindow.java
-* @Description 类描述
+* @ClassName MainWindow
+* @Description 邮件客户端的主界面
 */
 
 public class MainWindow extends JFrame {
@@ -56,21 +57,29 @@ public class MainWindow extends JFrame {
         setContentPane(contentPane);
         
         JPanel panel = new JPanel();
+        panel.setBorder(null);
         panel.setBackground(Color.WHITE);
         contentPane.add(panel, BorderLayout.NORTH);
         
         JButton getMail = new JButton("获取邮件");
+        getMail.setBackground(Color.WHITE);
+        
+        JButton newMail = new JButton("新建邮件");
+        newMail.setBackground(Color.WHITE);
         GroupLayout gl_panel = new GroupLayout(panel);
         gl_panel.setHorizontalGroup(
             gl_panel.createParallelGroup(Alignment.LEADING)
                 .addGroup(gl_panel.createSequentialGroup()
-                    .addContainerGap()
                     .addComponent(getMail)
-                    .addContainerGap(900, Short.MAX_VALUE))
+                    .addPreferredGap(ComponentPlacement.RELATED)
+                    .addComponent(newMail)
+                    .addContainerGap(833, Short.MAX_VALUE))
         );
         gl_panel.setVerticalGroup(
-            gl_panel.createParallelGroup(Alignment.LEADING)
-                .addComponent(getMail, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+            gl_panel.createParallelGroup(Alignment.TRAILING)
+                .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+                    .addComponent(getMail, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newMail, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
         );
         panel.setLayout(gl_panel);
     }
