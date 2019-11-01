@@ -1,16 +1,10 @@
 package com.fhlxc.gui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 /**
 * @author Xingchao Long
@@ -19,19 +13,17 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 * @Description 邮件客户端的主界面
 */
 
+@SuppressWarnings("serial")
 public class MainWindow extends JFrame {
-
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
-    private JPanel contentPane;
+    private MyMainJPanel contentPane;
 
     /**
      * Launch the application.
      */
     public static void main(String[] args) {
+        //线程，frame放入线程中，以便处理任何事件，界面程序都会有两个线程，一个监听用户操作，一个实现后台处理
         EventQueue.invokeLater(new Runnable() {
+            //实现runnable接口的run方法
             public void run() {
                 try {
                     MainWindow frame = new MainWindow();
@@ -47,40 +39,20 @@ public class MainWindow extends JFrame {
      * Create the frame.
      */
     public MainWindow() {
-        setBackground(Color.WHITE);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 1017, 695);
-        contentPane = new JPanel();
-        contentPane.setBackground(Color.WHITE);
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.setLayout(new BorderLayout(0, 0));
+        //设置窗口打下，获取屏幕的尺寸，并通过某些操作，设置窗口居中显示
+        setBounds((Toolkit.getDefaultToolkit().getScreenSize().width - 1000) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - 750) / 2, 1000, 750);
+        //去除默认的标题栏
+        setUndecorated(true);
+        //新建一个JPanel，当做主界面，存进JFrame，JFrame只能放JPanel，不能放其他部件
+        contentPane = new MyMainJPanel(true, "图片/background.png", null, 32);
+        //设置主界面的最小化、最大化按钮，参数1：传入窗口，JFrame;参数2：传入图片的路径;参数3、4、5：按钮三种状态的颜色
+        contentPane.setMinButton(this, "图片/min.png", Color.white, new Color(234, 249, 255), new Color(214, 242, 254));
+        contentPane.setMaxButton(this, "图片/max.png", Color.white, new Color(234, 249, 255), new Color(214, 242, 254));
+        //设置主界面关闭按钮，参数1：传入图片的路径;参数2、3、4：按钮三种状态的颜色
+        contentPane.setCloseButton("图片/close.png", Color.white, new Color(234, 249, 255), new Color(214, 242, 254));
+        //设置标题栏，一定要在设置按钮之后使用它，参数1：传入窗口，参数2：图片位置；参数3：标题名
+        contentPane.setTitleBarJPanel(this, "图片/startup.png", "邮件客户端");
+        //窗口里设置JPanel，这个方法会自动设置JPanel的大小为窗口大小，如用add则需自己设置大小
         setContentPane(contentPane);
-        
-        JPanel panel = new JPanel();
-        panel.setBorder(null);
-        panel.setBackground(Color.WHITE);
-        contentPane.add(panel, BorderLayout.NORTH);
-        
-        JButton getMail = new JButton("获取邮件");
-        getMail.setBackground(Color.WHITE);
-        
-        JButton newMail = new JButton("新建邮件");
-        newMail.setBackground(Color.WHITE);
-        GroupLayout gl_panel = new GroupLayout(panel);
-        gl_panel.setHorizontalGroup(
-            gl_panel.createParallelGroup(Alignment.LEADING)
-                .addGroup(gl_panel.createSequentialGroup()
-                    .addComponent(getMail)
-                    .addPreferredGap(ComponentPlacement.RELATED)
-                    .addComponent(newMail)
-                    .addContainerGap(833, Short.MAX_VALUE))
-        );
-        gl_panel.setVerticalGroup(
-            gl_panel.createParallelGroup(Alignment.TRAILING)
-                .addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-                    .addComponent(getMail, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newMail, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-        );
-        panel.setLayout(gl_panel);
     }
 }
