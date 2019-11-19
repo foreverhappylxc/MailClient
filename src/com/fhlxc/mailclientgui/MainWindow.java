@@ -3,11 +3,16 @@ package com.fhlxc.mailclientgui;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
+
 import com.fhlxc.gui.*;
 
 /**
@@ -105,5 +110,43 @@ public class MainWindow extends JFrame {
         contentPane.setDialog(dialog, myDialogJPanel);
         //窗口里设置JPanel，这个方法会自动设置JPanel的大小为窗口大小，如用add则需自己设置大小
         setContentPane(contentPane);
+        UserJPanel userJPanel = new UserJPanel(this);
+        //userJPanel.setBackgroundImage(new ImageIcon("图片/userBackground.png").getImage());
+        //userJPanel.setBackgroundColor(Color.white);
+        contentPane.add(userJPanel, BorderLayout.WEST);
+        ContentJPanel contentJPanel = new ContentJPanel(this);
+        contentPane.add(contentJPanel, BorderLayout.CENTER);
+        contentJPanel.setxSize(this.getWidth() * 7 / 10, 32);
+        contentJPanel.setButtons();
+        contentJPanel.setTextArea();
+        contentJPanel.setMailDetail();
+        //contentJPanel.setBackgroundImage(new ImageIcon("图片/mailBackground.png").getImage());
+        //contentJPanel.setBackgroundColor(Color.white);
+        contentPane.getMaxButton().addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (getExtendedState() == JFrame.NORMAL) {
+                    //改变imageButton变量的值，并将最小化的按钮变为不可见，有一个bug，调不好，只好放弃，
+                    //即在最大化状态，最小，之后还原，变为正常状态而不是最大状态
+                    contentPane.getMaxButton().setImageButton(new ImageIcon("图片/normal.png").getImage());
+                    contentPane.getMinButton().setVisible(false);
+                    //改变窗口的状态，变为最大化状态，会自动调用paintComponent函数
+                    setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    userJPanel.resetSize();
+                    contentJPanel.setxSize(getWidth() * 7 / 10, 32);
+                    contentJPanel.resetSize();
+                } else {
+                    //在最大状态就变小，并将最小化按钮可见
+                    contentPane.getMaxButton().setImageButton(new ImageIcon("图片/max.png").getImage());
+                    contentPane.getMinButton().setVisible(true);
+                    //使窗口恢复正常
+                    setExtendedState(JFrame.NORMAL);
+                    userJPanel.resetSize();
+                    contentJPanel.setxSize(getWidth() * 7 / 10, 32);
+                    contentJPanel.resetSize();
+                }
+            }
+        });
     }
 }
