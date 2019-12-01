@@ -3,9 +3,9 @@ package com.fhlxc.mailclientgui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
 
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
@@ -19,6 +19,13 @@ import com.fhlxc.gui.MyJButton;
 */
 
 public class MyScrollBarUI extends BasicScrollBarUI {
+    private Image image1;
+    private Image image2;
+    
+    public MyScrollBarUI(Image image1, Image image2) {
+        this.image1 = image1;
+        this.image2 = image2;
+    }
     
     //设置滑轮的大小
     public Dimension getPreferredSize(JComponent c) {
@@ -45,7 +52,7 @@ public class MyScrollBarUI extends BasicScrollBarUI {
         upButton.setPressColor(new Color(234, 249, 255));
         upButton.setHoverColor(new Color(214, 242, 254));
         upButton.setColor(new Color(103, 211, 255));
-        upButton.setImageButton(new ImageIcon("图片/up.png").getImage());
+        upButton.setImageButton(image1);
         return upButton;
     }
     
@@ -55,7 +62,7 @@ public class MyScrollBarUI extends BasicScrollBarUI {
         downButton.setPressColor(new Color(234, 249, 255));
         downButton.setHoverColor(new Color(214, 242, 254));
         downButton.setColor(new Color(103, 211, 255));
-        downButton.setImageButton(new ImageIcon("图片/down.png").getImage());
+        downButton.setImageButton(image2);
         return downButton;
     }
 }

@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
@@ -49,7 +48,7 @@ public class MainWindow extends JFrame {
      */
     public MainWindow() {
         //设置窗口打下，获取屏幕的尺寸，并通过某些操作，设置窗口居中显示
-        setBounds((Toolkit.getDefaultToolkit().getScreenSize().width - 1000) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - 750) / 2, 1000, 750);
+        setBounds((Toolkit.getDefaultToolkit().getScreenSize().width - 1500) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - 950) / 2, 1500, 950);
         //去除默认的标题栏
         setUndecorated(true);
         //新建一个JPanel，当做主界面
@@ -74,49 +73,20 @@ public class MainWindow extends JFrame {
         //设置标题栏，一定要在设置按钮之后使用它，参数1：传入图片，参数2：标题内容
         contentPane.setTitleBarJPanel(new ImageIcon("图片/startup.png").getImage(), "邮件客户端");
         //新建一个对话框
-        JDialog dialog = new JDialog();
-        //新建对话框的主面板
-        MyDialogJPanel myDialogJPanel = new MyDialogJPanel();
-        //设置对话框无标题栏
-        dialog.setUndecorated(true);
-        //设置对话框为模态对话框
-        dialog.setModal(true);
-        //将对话框传给对话框主界面
-        myDialogJPanel.setMyDialog(dialog);
-        //设置对话框的标题栏的高度
-        myDialogJPanel.setTitleBarHeight(32);
-        //设置对话框的字体样式，指的是标题栏的字体
-        myDialogJPanel.setFont(new Font("宋体", Font.PLAIN, 15));
-        //设置对话框标题栏的字体颜色
-        myDialogJPanel.setFontColor(Color.black);
-        //设置对话框的背景颜色
-        myDialogJPanel.setBackgroundColor(Color.white);
-        //设置对话框标题栏的关闭按钮
-        myDialogJPanel.setTitleBarButton("", new ImageIcon("图片/close.png").getImage(), Color.white, new Color(234, 249, 255), new Color(214, 242, 254));
-        //设置标题栏左上角图标和标题内容
-        myDialogJPanel.setTitleBarJPanel(new ImageIcon("图片/startup.png").getImage(), "提示对话框");
-        //设置对话框中间部分，左边是图片，右边是文字内容（可设置字体和颜色）
-        myDialogJPanel.setContentJPanel("确定关闭对话框吗？", new ImageIcon("图片/warning.png").getImage(), new Font("宋体", Font.PLAIN, 20), Color.black);
-        //设置下方确定和取消按钮，参数和设置按钮的参数是一样的
-        myDialogJPanel.setOkButton("Ok", null, new Font("宋体", Font.PLAIN, 20), Color.black, Color.white, new Color(234, 249, 255), new Color(214, 242, 254));
-        myDialogJPanel.setCancelButton("Cancel", null, new Font("宋体", Font.PLAIN, 20), Color.black, Color.white, new Color(234, 249, 255), new Color(214, 242, 254));
-        //组合对话框的下层按钮，一定要放在ok和cancel button之后
-        myDialogJPanel.setButtonJPanel();
-        //对话框不可见
-        dialog.setVisible(false);
-        //对话框设置内容
-        dialog.setContentPane(myDialogJPanel);
+        InfoDialog infoDialog = new InfoDialog(this);
+        infoDialog.setDialog("确定关闭对话框吗？", new ImageIcon("图片/warning.png").getImage());
+        infoDialog.setVisible(false);
         //把对话框窗口和对话框内容传给主界面，便于直接操作
-        contentPane.setDialog(dialog, myDialogJPanel);
+        contentPane.setDialog(infoDialog.getDialog(), infoDialog.getDialogJPanel());
         //窗口里设置JPanel，这个方法会自动设置JPanel的大小为窗口大小，如用add则需自己设置大小
         setContentPane(contentPane);
-        UserJPanel userJPanel = new UserJPanel(this);
+        ContentJPanel contentJPanel = new ContentJPanel(this);
+        UserJPanel userJPanel = new UserJPanel(this, contentJPanel);
         //userJPanel.setBackgroundImage(new ImageIcon("图片/userBackground.png").getImage());
         //userJPanel.setBackgroundColor(Color.white);
         contentPane.add(userJPanel, BorderLayout.WEST);
-        ContentJPanel contentJPanel = new ContentJPanel(this);
         contentPane.add(contentJPanel, BorderLayout.CENTER);
-        contentJPanel.setxSize(this.getWidth() * 7 / 10, 32);
+        contentJPanel.setxSize(this.getWidth() * 8 / 10, 32);
         contentJPanel.setButtons();
         contentJPanel.setTextArea();
         contentJPanel.setMailDetail();

@@ -5,29 +5,31 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 
 import com.fhlxc.gui.MyJButton;
 import com.fhlxc.gui.MyJLabel;
 
 /**
 * @author Xingchao Long
-* @date 2019/49/10 15:49:00
-* @ClassName LoginJPanel
-* @Description 登录对话框
+* @date 2019/12/01 00:12:02
+* @ClassName SendJPanel
+* @Description 发送邮件的界面
 */
 
 @SuppressWarnings("serial")
-public class LoginJPanel extends JPanel {
+public class SendJPanel extends JPanel {
   //对话框背景颜色
     private Color backgroundColor;
     //对话框背景图片
@@ -59,33 +61,37 @@ public class LoginJPanel extends JPanel {
     private Font font;
     //对话框的字体颜色
     private Color fontColor;
-    //用户昵称
+    //主题
     private JTextField text1;
-    //用户的邮箱号
+    //收件人
     private JTextField text2;
-    //用户账号的密码
-    private JPasswordField pass1;
+    //邮件的内容
+    private JTextArea text3;
     
-    //获取昵称
-    public String getNickName() {
+    private JPanel panel;
+    private JPanel panel1;
+    private JPanel panel2;
+    private JPanel panel3;
+    
+    //获取主题
+    public String getSubject() {
         String s = text1.getText();
         text1.setText("");
         return s;
     }
     
-    //获取邮箱账号
-    public String getMail() {
+    //获取收件人
+    public String getTo() {
         String s = text2.getText();
         text2.setText("");
         return s;
     }
     
-    //获取密码
-    public String getPWD() {
-        char[] values = pass1.getPassword();
-        String password = new String(values);
-        pass1.setText("");
-        return password;
+    //获取内容
+    public String getContent() {
+        String s = text3.getText();
+        text3.setText("");
+        return s;
     }
     
     //传入外部对话框
@@ -96,14 +102,21 @@ public class LoginJPanel extends JPanel {
     //重新设置组建的大小
     public void resetSize() {
         //设置确定按钮的大小
-        okButton.setPreferredSize(new Dimension(myDialog.getWidth() / 2, myDialog.getHeight() / 5));
+        okButton.setPreferredSize(new Dimension(myDialog.getWidth() / 2, myDialog.getHeight() / 10));
         //设置标题栏的高度
         titleBarJPanel.setPreferredSize(new Dimension(this.getWidth(), titleBarHeight));
+        panel.setPreferredSize(new Dimension(myDialog.getWidth(), 80));
+        panel1.setPreferredSize(new Dimension(panel.getWidth(), 35));
     }
     
     //设置标题栏的宽度
     public void setTitleBarHeight(int titleBarHeight) {
         this.titleBarHeight = titleBarHeight;
+    }
+    
+    //设置标题
+    public void setTitle(String title) {
+        titleBarTitleJLabel.setTextString(title);
     }
     
     //设置标题栏，第一个参数标题栏的左上角图像，第二个参数是标题栏的标题名
@@ -166,67 +179,73 @@ public class LoginJPanel extends JPanel {
     //设置中间部分的内容
     public void setContentJPanel() {
         contentJPanel = new JPanel();
-        contentJPanel.setLayout(new GridLayout(3, 1));
+        contentJPanel.setLayout(new BorderLayout(10, 10));
         contentJPanel.setBorder(BorderFactory.createEmptyBorder());
-        //三个面板，存放昵称、邮箱和密码
-        JPanel panel1 = new JPanel();
-        JPanel panel2 = new JPanel();
-        JPanel panel3 = new JPanel();
-        //三个标签，存放提示的字
+        contentJPanel.setBackground(Color.white);
+        //三个面板，存放主题、收件人和内容
+        panel = new JPanel();
+        panel1 = new JPanel();
+        panel2 = new JPanel();
+        panel3 = new JPanel();
+        //两个标签，存放提示的字
         MyJLabel label1 = new MyJLabel();
         MyJLabel label2 = new MyJLabel();
-        MyJLabel label3 = new MyJLabel();
         text1 = new JTextField();
         text2 = new JTextField();
-        pass1 = new JPasswordField();
+        text3 = new JTextArea();
         
+        panel.setLayout(new BorderLayout(10, 10));
+        panel.setBackground(Color.white);
         panel1.setLayout(new BorderLayout(0, 0));
         panel2.setLayout(new BorderLayout(0, 0));
         panel3.setLayout(new BorderLayout(0, 0));
         
         //设置标签1
-        label1.setTextString("用户名：");
-        label1.setFont(new Font("楷体",  Font.PLAIN, 14));
+        label1.setTextString("主题：");
+        label1.setFont(new Font("宋体",  Font.PLAIN, 15));
         label1.setFontColor(Color.black);
         label1.setColor(Color.white);
         label1.setPreferredSize(new Dimension(60, 0));
         
         //设置标签2
-        label2.setTextString("邮箱：");
-        label2.setFont(new Font("楷体",  Font.PLAIN, 14));
+        label2.setTextString("收件人：");
+        label2.setFont(new Font("宋体",  Font.PLAIN, 15));
         label2.setFontColor(Color.black);
         label2.setColor(Color.white);
         label2.setPreferredSize(new Dimension(60, 0));
         
-        //设置标签3
-        label3.setTextString("密码：");
-        label3.setFont(new Font("楷体",  Font.PLAIN, 14));
-        label3.setFontColor(Color.black);
-        label3.setColor(Color.white);
-        label3.setPreferredSize(new Dimension(60, 0));
-        
         //设置输入框的边框样式
         text1.setBorder(BorderFactory.createLineBorder(new Color(214, 242, 254), 1, true));
         text2.setBorder(BorderFactory.createLineBorder(new Color(214, 242, 254), 1, true));
-        pass1.setBorder(BorderFactory.createLineBorder(new Color(214, 242, 254), 1, true));
+        text3.setBorder(BorderFactory.createLineBorder(new Color(214, 242, 254), 1, true));
+        JScrollPane scrollPane1 = new JScrollPane();
+        text3.setLineWrap(true);
+        text3.setBorder(BorderFactory.createLineBorder(new Color(214, 242, 254), 1, true));
+        //text3.setOpaque(false);
+        text3.setBackground(Color.white);
+        text3.setFont(new Font("宋体", Font.PLAIN, 16));
+        scrollPane1.setViewportView(text3);
+        scrollPane1.setBorder(null);
+        scrollPane1.setOpaque(false);
+        scrollPane1.getVerticalScrollBar().setUI(new MyScrollBarUI(new ImageIcon("图片/up.png").getImage(), new ImageIcon("图片/down.png").getImage()));
+        scrollPane1.getVerticalScrollBar().setUnitIncrement(15);
+        scrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane1.getViewport().setOpaque(false);
         
         panel1.add(label1, BorderLayout.WEST);
         panel2.add(label2, BorderLayout.WEST);
-        panel3.add(label3, BorderLayout.WEST);
         
         panel1.add(text1, BorderLayout.CENTER);
         panel2.add(text2, BorderLayout.CENTER);
-        panel3.add(pass1, BorderLayout.CENTER);
+        panel3.add(scrollPane1, BorderLayout.CENTER);
         
-        contentJPanel.add(panel1);
-        contentJPanel.add(panel2);
-        contentJPanel.add(panel3);
+        panel.add(panel1, BorderLayout.NORTH);
+        panel.add(panel2, BorderLayout.CENTER);
+        
+        contentJPanel.add(panel, BorderLayout.NORTH);
+        contentJPanel.add(panel3, BorderLayout.CENTER);
         //添加中间部分到对话框
         this.add(contentJPanel, BorderLayout.CENTER);
-    }
-    
-    public void setVisible(boolean visible) {
-        myDialog.setVisible(visible);
     }
     
     //设置对话框底部的按钮
@@ -254,8 +273,7 @@ public class LoginJPanel extends JPanel {
      * @param pressColor 设置鼠标按住时按钮的颜色
      */
     public void setOkButton(String textString, Image image, Font font, Color fontColor, Color color, Color hoverColor, Color pressColor) {
-        okButton = new MyJButton();
-        okButton.setPreferredSize(new Dimension(myDialog.getWidth() / 2, myDialog.getHeight() / 5)); 
+        okButton = new MyJButton(); 
         okButton.setTextString(textString);
         okButton.setImageButton(image);
         okButton.setFont(font);
@@ -332,8 +350,8 @@ public class LoginJPanel extends JPanel {
     }
     
     //构造函数设置边框布局
-    public LoginJPanel() {
-        setLayout(new BorderLayout(0, 0));
+    public SendJPanel() {
+        setLayout(new BorderLayout(0, 20));
         setOpaque(false);
     }
     

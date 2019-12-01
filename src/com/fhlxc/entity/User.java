@@ -13,30 +13,51 @@ import java.util.regex.Pattern;
 */
 
 public class User {
+    //用户的昵称
     private String nickName;
+    //用户的密码信息
     private String pwd;
+    //用户的邮件信息
     private String email;
+    //用户的邮箱服务器
     private String serverPOP3;
     private String serverSMTP;
-    private List<Mail> mails;
+    //用户的邮件列表信息
+    private List<Integer> mails;
+    //用于所处的状态
+    private int state;
+    private int maxOutBox;
     
-    public void addMail(int number, String sender, String subject, String date, String contentType) {
-        
+    //用户处于收件箱状态
+    public static final int INBOX = 0;
+    //用户处于发件箱状态
+    public static final int OUTBOX = 1;
+    
+    public int getMaxOutBox() {
+        return maxOutBox;
     }
-    
+
+    public void setMaxOutBox(int maxOutBox) {
+        this.maxOutBox = maxOutBox;
+    }
+
     public User() {
-        mails = new ArrayList<Mail>();
+        mails = new ArrayList<>();
     }
     
-    public void addMail(Mail mail) {
+    public void setState(int state) {
+        this.state = state;
+    }
+    
+    public int getState() {
+        return state;
+    }
+    
+    public void addMail(Integer mail) {
         mails.add(mail);
     }
     
-    public void deleteMail(int mail) {
-        mails.remove(mail);
-    }
-    
-    public List<Mail> getMails() {
+    public List<Integer> getMails() {
         return mails;
     }
     
@@ -60,6 +81,7 @@ public class User {
         return email;
     }
     
+    //设置邮件的时候同时设置服务器名称
     public void setEmail(String email) {
         String regx = "@[\\s\\S]*\\.";
         Pattern pattern = Pattern.compile(regx);
