@@ -26,8 +26,8 @@ import javax.swing.ScrollPaneConstants;
 import com.fhlxc.backend.OperateMail;
 import com.fhlxc.data.Info;
 import com.fhlxc.entity.Mail;
-import com.fhlxc.gui.MyJButton;
-import com.fhlxc.gui.MyJLabel;
+import com.fhlxc.mygui.MyJButton;
+import com.fhlxc.mygui.MyJLabel;
 
 /**
 * @author Xingchao Long
@@ -166,7 +166,7 @@ public class ContentJPanel extends JPanel {
                 }
                 while (true) {
                     sendDialog.setVisible(true);
-                    //点击登录按钮处理
+                    //点击发送按钮处理
                     if (sendJPanel.getClose()) {
                         Mail mail = new Mail();
                         mail.setSubject(sendJPanel.getSubject().trim());

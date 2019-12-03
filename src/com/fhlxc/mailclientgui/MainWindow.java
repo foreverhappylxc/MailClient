@@ -9,10 +9,10 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import com.fhlxc.mygui.MyMainJPanel;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
-
-import com.fhlxc.gui.*;
 
 /**
 * @author Xingchao Long

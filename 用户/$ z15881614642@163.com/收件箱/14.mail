@@ -1,0 +1,45 @@
++OK 2267 octets
+Received: from out-20.smtp.github.com (unknown [192.30.252.203])
+	by mx19 (Coremail) with SMTP id RcCowAAXSR8w_8ddJYDIFQ--.11338S3;
+	Sun, 10 Nov 2019 20:14:43 +0800 (CST)
+Date: Sun, 10 Nov 2019 04:14:39 -0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=github.com;
+	s=pf2014; t=1573388079;
+	bh=2OfjAhf0GZuMWLIbjB2V+w9qz5tN6cq5aLVHG2yyyNg=;
+	h=Date:From:To:Subject:From;
+	b=ycQsV+/RMleqOsMSLRuxL4MC4hD8yqimapFxpOpR97RP/X9V7+dlDpbxqm4/bwgJk
+	 OmQqycPvv4LDF+uHr+M/vQ6qoBDOGFTirq/AB0iVqns0IU+NxqkbDhczJvmgyzev1b
+	 aVoz0zkGK/XbkvL1/EoJ0XLQzFozmE/XglT7rvJI=
+From: GitHub <noreply@github.com>
+To: Xingchao Long <1771583929@qq.com>
+Message-ID: <5dc7ff2fb91b4_29833fd7c44cd96c80885b@github-lowworker-6313c1a.cp1-iad.github.net.mail>
+Subject: [GitHub] Please verify your device
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Auto-Response-Suppress: All
+X-CM-TRANSID:RcCowAAXSR8w_8ddJYDIFQ--.11338S3
+Authentication-Results: mx19; spf=pass smtp.mail=noreply@github.com; d
+	kim=pass header.i=@github.com
+X-Coremail-Antispam: 1Uf129KBjvdXoW7JF18CF18uw4fur18ArW7twb_yoWfKrX_Jw
+	48Zryavw4jy3y09a90gF18Wrn5C3y8Za4jyw18Jrs7K3WqvrZ7Gr1ktr1xtF4fAayav398
+	WwsYyw4xCF4kWjkaLaAFLSUrUUU1Rb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUjItC5UUUUU==
+
+Hey fhlxc!
+
+A sign in attempt requires further verification because we did not recognize your device. To complete the sign in, enter the verification code on the unrecognized device.
+
+Device: Chrome on Windows
+Verification code: 321746
+
+If you did not attempt to sign in to your account, your password may be compromised. Visit https://github.com/settings/admin to create a new, strong password for your GitHub account.
+
+If you'd like to automatically verify devices in the future, consider enabling two-factor authentication on your account. Visit https://help.github.com/articles/configuring-two-factor-authentication learn about two-factor authentication.
+
+If you decide to enable two-factor authentication, ensure you retain access to one or more account recovery methods. See https://help.github.com/articles/configuring-two-factor-authentication-recovery-methods in the GitHub Help.
+
+Thanks,
+The GitHub Team
+.

@@ -7,6 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -96,6 +99,19 @@ public class GetInfo {
         return userNodes;
     }
     
+    private Integer f(String filename) {
+        int x = filename.indexOf(".");
+        String string2 = filename.substring(0,x);
+        char[] cs = string2.toCharArray();
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < cs.length; i++) {
+            if(Character.isDigit(cs[i])) {
+                builder.append(cs[i]);
+            }
+        }
+        return Integer.parseInt(builder.toString());
+    }
+    
     //加载邮件的主题等内容
     public List<Mail> loadInfo(String path) {
         List<Mail> list = new ArrayList<>();
@@ -103,6 +119,19 @@ public class GetInfo {
         File file = new File(path);
         if (file.isDirectory()) {
             File[] files = file.listFiles();
+            List<File> fileList = Arrays.asList(files);
+            Collections.sort(fileList, new Comparator<File>() {
+                @Override
+                public int compare(File o1, File o2) {
+                    if (o1.isDirectory() && o2.isFile())
+                        return -1;
+                    if (o1.isFile() && o2.isDirectory())
+                        return 1;
+                    Integer f1 = f(o1.getName());
+                    Integer f2 = f(o2.getName());
+                    return Integer.compare(f1, f2);
+                }
+            });
             for (File f: files) {
                 list.add(operateMail.parseMail(f, true));
             }

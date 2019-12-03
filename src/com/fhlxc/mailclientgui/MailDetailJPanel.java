@@ -9,7 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import com.fhlxc.entity.Mail;
-import com.fhlxc.gui.MyJLabel;
+import com.fhlxc.mygui.MyJLabel;
 
 /**
 * @author Xingchao Long

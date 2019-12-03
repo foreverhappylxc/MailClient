@@ -18,6 +18,9 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.fhlxc.data.Info;
@@ -131,6 +134,19 @@ public class OperateMail {
         }
     }
     
+    private Integer f(String filename) {
+        int x = filename.indexOf(".");
+        String string2 = filename.substring(0,x);
+        char[] cs = string2.toCharArray();
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < cs.length; i++) {
+            if(Character.isDigit(cs[i])) {
+                builder.append(cs[i]);
+            }
+        }
+        return Integer.parseInt(builder.toString());
+    }
+    
     //删除邮件操作
     public void deleteMail(int num) {
         try (Socket socket = new Socket(InetAddress.getByName(Info.currUser.getServerPOP3()), 110)) {
@@ -199,6 +215,20 @@ public class OperateMail {
             File f = new File(path);
             if (f.isDirectory()) {
                 File[] ff = f.listFiles();
+                //排序
+                List<File> fileList = Arrays.asList(ff);
+                Collections.sort(fileList, new Comparator<File>() {
+                    @Override
+                    public int compare(File o1, File o2) {
+                        if (o1.isDirectory() && o2.isFile())
+                            return -1;
+                        if (o1.isFile() && o2.isDirectory())
+                            return 1;
+                        Integer f1 = f(o1.getName());
+                        Integer f2 = f(o2.getName());
+                        return Integer.compare(f1, f2);
+                    }
+                });
                 //遍历整个文件夹重命名部分文件
                 for (File file2: ff) {
                     String fg = file2.getName();
@@ -220,6 +250,7 @@ public class OperateMail {
     //获取邮件的内容
     public String getContent(Mail mail) {
         String path;
+        String s2 = "";
         StringBuilder stringBuilder = new StringBuilder();
         if (Info.currUser.getState() == User.INBOX) {
             path = "用户/" + Info.currUser.getNickName() + " " + Info.currUser.getEmail() + "/收件箱";
@@ -270,21 +301,23 @@ public class OperateMail {
                     
                     if (mail.getTce().equals("base64")) {
                         do {
-                            String s = new String(Info.decoder.decode(info), mail.getType());
-                            stringBuilder.append(s + "\n");
+                            stringBuilder.append(info);
                             info = reader.readLine();
                         } while (!info.equals("."));
+                        String s1 = stringBuilder.toString();
+                        s2 = new String(Info.decoder.decode(s1), mail.getType());
                     }
                     
                     if (mail.getTce().equals("quoted-printable")) {
                         do {
-                            String s = QuotedPrintable.qpDecoding(info, mail.getType());
-                            stringBuilder.append(s + "\n");
+                            stringBuilder.append(info);
                             info = reader.readLine();
                         } while (!info.equals("."));
+                        String s1 = stringBuilder.toString();
+                        s2 = QuotedPrintable.qpDecoding(s1, mail.getType());
                     }
                     reader.close();
-                    return stringBuilder.toString();
+                    return s2;
                 }
                 
                 if (mail.getContentType().equals("multipart/alternative")) {
@@ -296,8 +329,7 @@ public class OperateMail {
                     
                     do {
                         if (!read) {
-                            
-                            while (!info.equals(mailType)) {
+                            while (!info.contains(mailType)) {
                                 if (info.equals(".")) {
                                     break;
                                 }
@@ -305,7 +337,7 @@ public class OperateMail {
                             }
                         }
                         read = false;
-                        if (info.equals(mailType)) {
+                        if (info.contains(mailType)) {
                             info = reader.readLine();
                             if (info.equals(".")) {
                                 break;
@@ -336,8 +368,9 @@ public class OperateMail {
                                 continue;
                             }
                             
-                            //无加密或加密方式不支持的时候
-                            if (cte.equals("") || (!cte.toLowerCase().equals("quoted-printable") && !cte.toLowerCase().equals("base64"))) {
+                            //加密方式不支持的时候
+                            if (!cte.equals("") && (!cte.toLowerCase().equals("quoted-printable") && !cte.toLowerCase().equals("base64"))) {
+                                
                                 do {
                                     info = reader.readLine();
                                     
@@ -351,8 +384,28 @@ public class OperateMail {
                                     }
                                     
                                     String s1 = new String(info.getBytes(), charset);
+                                    stringBuilder.append(s1);
+                                } while (!info.equals("."));
+                                s2 = stringBuilder.toString();
+                            }
+                            
+                            if (cte.equals("")) {
+                                do {
+                                    info = reader.readLine();
+                                    
+                                    if (info.equals(".")) {
+                                        break;
+                                    }
+                                    
+                                    if (info.contains(mailType)) {
+                                        read = true;
+                                        break;
+                                    }
+                                    
+                                    String s1 = new String(info.getBytes(), charset);
                                     stringBuilder.append(s1 + "\n");
                                 } while (!info.equals("."));
+                                s2 = stringBuilder.toString();
                             }
                             
                             if (cte.equals("base64")) {
@@ -363,13 +416,14 @@ public class OperateMail {
                                         break;
                                     }
                                     
-                                    if (info.equals(mailType)) {
+                                    if (info.contains(mailType)) {
                                         read = true;
                                         break;
                                     }
-                                    String s1 = new String(Info.decoder.decode(info), charset);
-                                    stringBuilder.append(s1 + "\n");
+                                    stringBuilder.append(info);
                                 } while (!info.equals("."));
+                                String s1 = stringBuilder.toString();
+                                s2 = new String(Info.decoder.decode(s1), charset);
                             }
                             
                             if (cte.equals("quoted-printable")) {
@@ -380,18 +434,19 @@ public class OperateMail {
                                         break;
                                     }
                                     
-                                    if (info.equals(mailType)) {
+                                    if (info.contains(mailType)) {
                                         read = true;
                                         break;
                                     }
-                                    String s1 = QuotedPrintable.qpDecoding(info, charset);
-                                    stringBuilder.append(s1 + "\n");
+                                    stringBuilder.append(info);
                                 } while(!info.equals("."));
+                                String s1 = stringBuilder.toString();
+                                s2 = QuotedPrintable.qpDecoding(s1, charset);
                             }
                         }
                     } while (!info.equals("."));
                     reader.close();
-                    return stringBuilder.toString();
+                    return s2;
                 }
             }
             

@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import com.fhlxc.gui.MyJButton;
-import com.fhlxc.gui.MyJLabel;
+import com.fhlxc.mygui.MyJButton;
+import com.fhlxc.mygui.MyJLabel;
 
 /**
 * @author Xingchao Long
@@ -28,7 +28,7 @@ import com.fhlxc.gui.MyJLabel;
 
 @SuppressWarnings("serial")
 public class LoginJPanel extends JPanel {
-  //对话框背景颜色
+    //对话框背景颜色
     private Color backgroundColor;
     //对话框背景图片
     private Image backgroundImage;
@@ -225,9 +225,7 @@ public class LoginJPanel extends JPanel {
         this.add(contentJPanel, BorderLayout.CENTER);
     }
     
-    public void setVisible(boolean visible) {
-        myDialog.setVisible(visible);
-    }
+    
     
     //设置对话框底部的按钮
     public void setButtonJPanel() {

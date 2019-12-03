@@ -9,7 +9,7 @@ import java.awt.Rectangle;
 import javax.swing.JComponent;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
-import com.fhlxc.gui.MyJButton;
+import com.fhlxc.mygui.MyJButton;
 
 /**
 * @author Xingchao Long

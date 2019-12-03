@@ -28,7 +28,7 @@ import com.fhlxc.backend.LoginIn;
 import com.fhlxc.data.Info;
 import com.fhlxc.entity.Mail;
 import com.fhlxc.entity.User;
-import com.fhlxc.gui.MyJButton;
+import com.fhlxc.mygui.MyJButton;
 
 /**
 * @author Xingchao Long

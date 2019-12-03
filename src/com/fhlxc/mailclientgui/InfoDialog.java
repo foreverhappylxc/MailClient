@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
-import com.fhlxc.gui.MyDialogJPanel;
+import com.fhlxc.mygui.MyDialogJPanel;
 
 /**
 * @author Xingchao Long

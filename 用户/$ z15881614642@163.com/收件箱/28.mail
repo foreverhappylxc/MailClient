@@ -1,0 +1,41 @@
++OK 3445 octets
+Received: from qq.com (unknown [59.36.132.32])
+	by mx41 (Coremail) with SMTP id W8CowADXlTaO9ORdxJ+7Nw--.54881S3;
+	Mon, 02 Dec 2019 19:25:02 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1575285902; bh=4KQ6XOK2eiOLCNKm7tHEo5l1VcHOSQ49uQlEPwvRvy0=;
+	h=From:To:Subject:Date:Message-ID;
+	b=PJtUhf71x/CGZN7/hGCkJnVEGtm2Y1GqZCjsVcq5DkZcVwMF1wsJHSvBfL/QmTHTL
+	 Y0Nhv8zNfhL/nwawUMNj4OyPjSfS5ELO8xwrD73JLAC13NxLrTK/j4dGHULqshzuOL
+	 XAqdnqnuIbmgzY+h2SRnSwcGAIkr/2cQGGy8J4Do=
+X-QQ-mid: esmtp7t1575285901tbge1x73f
+Received: from you (unknown [223.129.4.45])
+	by esmtp4.qq.com (ESMTP) with SMTP id 0
+	for <z15881614642@163.com>; Mon, 02 Dec 2019 19:25:00 +0800 (CST)
+X-QQ-SSF: 00010000000000B0F3100F00000000Q
+X-QQ-FEAT: P8dY9APmXTRoNW2hDPRI1UCYCtHF2sVNyjbL3+FIQYG76Qke31Am5Y0pAJhVM
+	IjkVQWldvwZBmS6PUrY/SsUQc52VRCikUxVVjFBgFlktknVQwsAEgRcOVC47TvB58jnrpH8
+	Fqm3PeHRatph3Cv/ACl4Emh9aMf4L1/OIN2xY4AFBE+Bj2QLJAl8ppSIbxLdbWIxuJDsKQq
+	s8+fkQoFYEkF7rP47311w/rCRysrqvzcKuL5HpD/Mkkh0sWmaBtJK9Pa04Ix6Kp1ZOb+5G6
+	aG9tfNJna06xwTEqhMVi/ZO0IajLbR8uuq3w==
+X-QQ-GoodBg: 0
+From: "=?utf-8?B?UVE=?=" <1771583929@qq.com>
+To: <z15881614642@163.com>
+Subject: =?utf-8?B?5oiR55qE5a6i5oi356uv5Y+R6YCB6YKu5Lu25rWL6K+V?=
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: base64
+Date: Tue, 2 11 2019 19:4:25 +0800
+X-QQ-SENDSIZE: 520
+Feedback-ID: esmtp:qq.com:bgweb:bgweb10
+Message-ID: mis_0D28F0E4780174686F1369AB@qq.com
+X-CM-TRANSID:W8CowADXlTaO9ORdxJ+7Nw--.54881S3
+Authentication-Results: mx41; spf=pass smtp.mail=1771583929@qq.com; dk
+	im=pass header.i=@qq.com
+X-Coremail-Antispam: 1Uf129KBjvdXoW7JrWUAw48WFyxCF1xAw4fZrb_yoWDJrc_ur
+	4vkFW3ArWfAwn3Way3Ja4Yyr9Ig3yDGFsrtayqq392kr45ArnI9w4DG34UCa40q3yFk34r
+	AFn8Cw4aqFsFyjkaLaAFLSUrUUUU1b8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU0rsqDUUUUU==
+
+MS4g6YKu5Lu25a6i5oi356uv5Y+v5Lul5ZCM5pe25Zyo57q/5aSa5Liq55So5oi377yM5q+P5Liq55So5oi35LmL6Ze05Y+v6L275piT5YiH5o2i77yM55uu5YmN5Y+q5bCd6K+V5LqG572R5piTMTYz5ZKMUVHpgq7nrrHvvIzmsqHpl67popjvvIznmbvlvZXor7fkvb/nlKjmjojmnYPnoIHjgIIKMi4g6YKu5Lu25a6i5oi356uv6IO96Kej5p6Q5Lik56eN5qC85byP55qE6YKu5Lu277yM5LiA5piv57qv5paH5pys5qC85byP77yadGV4dC9wbGFpbu+8jOS6jOaYr01JTUXkuK3nmoTkuIDnp43vvJptdWx0aXBhcnQvYWx0ZXJuYXRpdmXjgIIKMy4g6YKu5Lu25a6i5oi356uv5pSv5oyB5Lik56eN57yW56CB5qC85byP77yaYmFzZTY05ZKMcXVvdGVkLXByaW50YWJsZe+8jOS4jeaUr+aMgTdiaXTjgIE4Yml044CBYmluYXJ5562J44CCCjQuIOmCruS7tuWuouaIt+err+aUr+aMgeS7u+aEj+eahOWtl+espue8lueggeaWueW8j+Wmgu+8mnV0Zi0444CBZ2IxODAzMOOAgVVuaWNvZGXnrYnnrYnjgIIKNS4g6YKu566x5a6i5oi356uv55qE5a6e546w6Zmk5LqGYmFzZTY055So55qE5pivamF2YeiHquW4pueahOWMhe+8jOWFtuS9meWdh+aYr+iHquW3seWGmeS7o+eggeWunueOsOeahO+8jOW5tuacqueUqOWIsOesrOS4ieaWueeahGphcuWMheOAggo2LiDpgq7ku7blrqLmiLfnq6/lr7nkuo7kuI3mlK/mjIHnmoTpgq7ku7bmoLzlvI/kvJrmmL7npLrojrflj5bliLDnmoTkv6Hmga/vvIzlubbotLTlh7rmoLzlvI/kuI3mlK/mjIHnmoTmoIfnrb7vvIzlpoLmnpzmiYDlkKvpmYTku7blpKrlpKfvvIzliqDovb3ml7bpl7TlsLHmr5TovoPplb/vvIzpobXpnaLkvJrmhJ/op4nmrbvmjonvvIzkvYblhbblrp7mmK/lnKjmlbDmja7vvIzlpJrnrYnlvoXkvJrlhL/vvIzlsLHkvJrlh7rnjrDjgIIKNy4g6YKu5Lu25a6i5oi356uv5pyJ5b6I5aW955qE6ZSZ6K+v5o+Q56S65qGG77yM5Yeh5piv5pyq5Ye6546w5o+Q6YaS5qGG77yM56iL5bqP5bCx5Zyo5q2j56Gu6L+Q6KGM77yM5Y+q5piv55Sx5LqO6YKu5Lu25aSq5aSn5Yqg6L2955qE5pWw5o2u5oWi44CCCjguIOmCruS7tuWuouaIt+err+iDveato+ehruino+aekFFR6YKu566x5ZKM572R5piTMTYz6YKu566x77yI5Y+q5bCd6K+V6L+H6L+Z5Lik5Liq77yJ572R6aG154mI5Y+R6YCB55qE57qv5paH5pys6YKu5Lu244CC
+.

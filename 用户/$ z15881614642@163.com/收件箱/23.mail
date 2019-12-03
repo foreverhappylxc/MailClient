@@ -1,0 +1,63 @@
++OK 2353 octets
+Received: from qq.com (unknown [59.36.132.74])
+	by mx27 (Coremail) with SMTP id TcCowACHRDoIpuRdppZhAg--.14355S3;
+	Mon, 02 Dec 2019 13:50:00 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1575265800; bh=m8PZKbaXAGZEHsOxTm7vnbdF0k/bujWSXOA0x45Q0lM=;
+	h=From:To:Subject:Mime-Version:Date:Message-ID;
+	b=MS0ddp85TDkGiy1V+ELmAc9eiPEqOVupQYDiWA5QIqAcfwSzyw6+GKiDZDptmiZER
+	 RSWtuVE8TuVr67mpFok2W9/jrB4Y7dNPSdKaiF9IZcuZoCn1HA110DPx3RBgpOAtXQ
+	 2osobxsGxpS3t6A6MheYoOg61cWOElJb76/izDgM=
+X-QQ-FEAT: CaOyJLkxpPmb1egCOYLXWcCJQEAD6Ru1yp32J+xMvpcxEOx97xExlC+s7S43D
+	plgHsUlMR+JmFbTDSbz7vKm9GGXVFQxib79iR0mg5ZtK8IFbTDg07H20Pb787yb0QPUj00E
+	yOpHhhgupjJbD/Z3AdpJQvabPjb0rdFKPQOWvpKPdGW4YWvlgScdqVUEuM0v3rM32Qikfac
+	ZRyU0Bx7aQM71a558lB2j5wB0qQLJZKO76T1OIrm6lV2r1TB3lu2DBmGFB4qZ1QZ05YhChV
+	G/wQ==
+X-QQ-SSF: 00010000000000F000000000000000W
+X-HAS-ATTACH: no
+X-QQ-BUSINESS-ORIGIN: 2
+X-Originating-IP: 110.185.89.159
+X-QQ-STYLE: 
+X-QQ-mid: webmail320t1575265799t3910142
+From: "=?ISO-8859-1?B?MTc3MTU4MzkyOQ==?=" <1771583929@qq.com>
+To: "=?ISO-8859-1?B?WjE1ODgxNjE0NjQy?=" <z15881614642@163.com>
+Subject: 6
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_5DE4A606_0EA9CD38_7A3DC747"
+Content-Transfer-Encoding: 8Bit
+Date: Mon, 2 Dec 2019 13:49:58 +0800
+X-Priority: 3
+Message-ID: <tencent_E31C334ACFA827153D399000BC865CCD4809@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+X-QQ-SENDSIZE: 520
+Received: from qq.com (unknown [127.0.0.1])
+	by smtp.qq.com (ESMTP) with SMTP
+	id ; Mon, 02 Dec 2019 13:49:59 +0800 (CST)
+Feedback-ID: webmail:qq.com:bgweb:bgweb10
+X-CM-TRANSID:TcCowACHRDoIpuRdppZhAg--.14355S3
+Authentication-Results: mx27; spf=pass smtp.mail=1771583929@qq.com; dk
+	im=pass header.i=@qq.com
+X-Coremail-Antispam: 1Uf129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73
+	VFW2AGmfu7bjvjm3AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxUxzBTDUUUU
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_5DE4A606_0EA9CD38_7A3DC747
+Content-Type: text/plain;
+	charset="ISO-8859-1"
+Content-Transfer-Encoding: base64
+
+Ng==
+
+------=_NextPart_5DE4A606_0EA9CD38_7A3DC747
+Content-Type: text/html;
+	charset="ISO-8859-1"
+Content-Transfer-Encoding: base64
+
+PGRpdj42PC9kaXY+
+
+------=_NextPart_5DE4A606_0EA9CD38_7A3DC747--
+.

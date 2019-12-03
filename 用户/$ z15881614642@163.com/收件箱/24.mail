@@ -1,0 +1,62 @@
++OK 2339 octets
+Received: from qq.com (unknown [59.36.132.123])
+	by mx17 (Coremail) with SMTP id Q8CowADXc6ksquRdEEPCLQ--.63994S3;
+	Mon, 02 Dec 2019 14:07:41 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1575266860; bh=v7Yk7m+fYUbz+t+omO6iBVRVU0g412Z7zwW7B1JGCh8=;
+	h=From:To:Subject:Mime-Version:Date:Message-ID;
+	b=sU2UQ/60syisH6Q60fX533DI3clBrjvKP9XAzc9ZO7p7UlZfbiS9cbdPXLftoefdT
+	 P+G/0WCGEEaoPfinedTDxV/J7Oa7q5shtxe42N2SKRIFTQWa8sh4ZOJ2be3/XbTP4t
+	 9cYJdQbtP9cZJGhbyfpO27atU4jOTUmnNOp3eujU=
+X-QQ-FEAT: KgkZSnebZ4TNiy/T07ikZx+FEL9O3WpI5FhB71KOfwMtWNoD9O2biAvIMZdP8
+	nRDyROdYAJWs9DP9/3dPeLv9jQ6XQ0y3UFGh4t5dWzVocvavQTpJIiJtCSQAAU56RnCm5NE
+	DsVoo6MwL4uRRDgnr1p6yL8Pqc9Q9zuTL3hSqCm2BK8pwl4Z7yZRmO2JOeR6XewglH+yeTp
+	IqBqY1AeFEMAq8LWMOZNzD4RqVSprlErQMyrLqF6cY4SYlRV62VatRfPvktOhAbA=
+X-QQ-SSF: 00010000000000F000000000000000W
+X-HAS-ATTACH: no
+X-QQ-BUSINESS-ORIGIN: 2
+X-Originating-IP: 110.185.89.159
+X-QQ-STYLE: 
+X-QQ-mid: webmail320t1575266860t4416772
+From: "=?ISO-8859-1?B?MTc3MTU4MzkyOQ==?=" <1771583929@qq.com>
+To: "=?ISO-8859-1?B?WjE1ODgxNjE0NjQy?=" <z15881614642@163.com>
+Subject: 3
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_5DE4AA2C_0E54B490_4067B6AA"
+Content-Transfer-Encoding: 8Bit
+Date: Mon, 2 Dec 2019 14:07:40 +0800
+X-Priority: 3
+Message-ID: <tencent_8C3003B80C2D99313862962250DB2962720A@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+X-QQ-SENDSIZE: 520
+Received: from qq.com (unknown [127.0.0.1])
+	by smtp.qq.com (ESMTP) with SMTP
+	id ; Mon, 02 Dec 2019 14:07:40 +0800 (CST)
+Feedback-ID: webmail:qq.com:bgweb:bgweb10
+X-CM-TRANSID:Q8CowADXc6ksquRdEEPCLQ--.63994S3
+Authentication-Results: mx17; spf=pass smtp.mail=1771583929@qq.com; dk
+	im=pass header.i=@qq.com
+X-Coremail-Antispam: 1Uf129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7v73
+	VFW2AGmfu7bjvjm3AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxUx2-eDUUUU
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_5DE4AA2C_0E54B490_4067B6AA
+Content-Type: text/plain;
+	charset="ISO-8859-1"
+Content-Transfer-Encoding: base64
+
+Mw==
+
+------=_NextPart_5DE4AA2C_0E54B490_4067B6AA
+Content-Type: text/html;
+	charset="ISO-8859-1"
+Content-Transfer-Encoding: base64
+
+PGRpdj4zPC9kaXY+
+
+------=_NextPart_5DE4AA2C_0E54B490_4067B6AA--
+.
