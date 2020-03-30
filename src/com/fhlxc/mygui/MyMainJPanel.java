@@ -17,10 +17,6 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.fhlxc.mygui.MyDialogJPanel;
-import com.fhlxc.mygui.MyJButton;
-import com.fhlxc.mygui.MyJLabel;
-
 /**
 * @author Xingchao Long
 * @date 2019/36/31 15:36:23

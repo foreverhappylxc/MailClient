@@ -12,9 +12,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
-import com.fhlxc.mygui.MyJButton;
-import com.fhlxc.mygui.MyJLabel;
-
 /**
 * @author Xingchao Long
 * @date 2019/55/04 20:55:58
