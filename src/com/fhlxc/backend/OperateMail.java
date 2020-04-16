@@ -564,15 +564,19 @@ public class OperateMail {
                         if (info.contains("=?")) {
                             String[] ss = s[0].split("\\?");
                             
-                            if (ss[2].toUpperCase().equals("B")) {
-                                if (ss[1].toLowerCase().equals("utf8")) {
-                                    recevier = new String(ss[3].getBytes(ss[1]), ss[1]);
+                            if (ss.length > 1) {
+                                if (ss[2].toUpperCase().equals("B")) {
+                                    if (ss[1].toLowerCase().equals("utf8")) {
+                                        recevier = new String(ss[3].getBytes(ss[1]), ss[1]);
+                                    } else {
+                                        recevier = new String(Info.decoder.decode(ss[3]), ss[1]);
+                                    }
+                                    recevier = recevier + s[1];
                                 } else {
-                                    recevier = new String(Info.decoder.decode(ss[3]), ss[1]);
+                                    recevier = "编码不支持";
                                 }
-                                recevier = recevier + s[1];
-                            } else {
-                                recevier = "编码不支持";
+                            }  else {
+                                recevier = "";
                             }
                         } else {
                             recevier = s[0].trim().replace("\"", "") + s[1];
@@ -597,7 +601,11 @@ public class OperateMail {
                         if (info.contains("\"")) {
                             type = info.split("\"")[1];
                         } else {
-                            type = info.split("=")[1];
+                            if (info.split("=").length > 1) {
+                                type = info.split("=")[1];
+                            } else {
+                                type = "";
+                            }
                         }
                         mail.setType(type);
                     }

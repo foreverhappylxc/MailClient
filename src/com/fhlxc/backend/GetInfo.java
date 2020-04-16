@@ -34,6 +34,9 @@ public class GetInfo {
         String path = new String("用户");
         //遍历全部用户文件夹，添加信息
         File file = new File(path);
+        if (!file.exists()) {
+            file.mkdir();
+        }
         if (file.isDirectory()) {
             File[] files = file.listFiles();
             for (int i = 0; i < files.length; i++) {
