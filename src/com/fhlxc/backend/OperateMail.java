@@ -47,10 +47,10 @@ public class OperateMail {
             InputStream in = socket.getInputStream();
             OutputStream out = socket.getOutputStream();
             
-            Reader reader = new InputStreamReader(in);
+            Reader reader = new InputStreamReader(in, "GBK");
             BufferedReader bufferedReader = new BufferedReader(reader);
             
-            Writer writer = new OutputStreamWriter(out);
+            Writer writer = new OutputStreamWriter(out, "GBK");
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             
             //下面一大段在与服务器建立连接
@@ -154,10 +154,10 @@ public class OperateMail {
             InputStream in = socket.getInputStream();
             OutputStream out = socket.getOutputStream();
             
-            Reader reader = new InputStreamReader(in);
+            Reader reader = new InputStreamReader(in, "GBK");
             BufferedReader bufferedReader = new BufferedReader(reader);
             
-            Writer writer = new OutputStreamWriter(out);
+            Writer writer = new OutputStreamWriter(out, "GBK");
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             
             info = bufferedReader.readLine();
@@ -633,10 +633,10 @@ public class OperateMail {
             InputStream in = socket.getInputStream();
             OutputStream out = socket.getOutputStream();
             
-            Reader reader = new InputStreamReader(in);
+            Reader reader = new InputStreamReader(in, "GBK");
             BufferedReader bufferedReader = new BufferedReader(reader);
             
-            Writer writer = new OutputStreamWriter(out);
+            Writer writer = new OutputStreamWriter(out, "GBK");
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             
             info = bufferedReader.readLine();

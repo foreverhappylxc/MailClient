@@ -58,10 +58,10 @@ public class LoginIn {
             InputStream in = socket.getInputStream();
             OutputStream out = socket.getOutputStream();
             
-            Reader reader = new InputStreamReader(in);
+            Reader reader = new InputStreamReader(in, "GBK");
             bufferedReader = new BufferedReader(reader);
             
-            Writer writer = new OutputStreamWriter(out);
+            Writer writer = new OutputStreamWriter(out, "GBK");
             bufferedWriter = new BufferedWriter(writer);
             
             info = bufferedReader.readLine();
